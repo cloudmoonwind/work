@@ -1,5 +1,5 @@
 {
-  "name": "Normal Distribution Table Generator",
+  "name": "Normal Distribution Table Generator2",
   "description": "A specialized tool to generate a 16-row table with integer percentages following a normal distribution, with specific expectation shifts and constraints for XLSX export.",
   "requestFramePermissions": []
 }

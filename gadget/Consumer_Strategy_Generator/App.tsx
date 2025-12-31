@@ -18,16 +18,22 @@ const App: React.FC = () => {
   const [config, setConfig] = useState<TableConfig>({
     firstRowExpectation: 8.0,
     minCol: 5,
-    maxCol: 15
+    maxCol: 15,
+    maxDiff: 5.0 // 默认跨度设为 5
   });
   const [result, setResult] = useState<TableResult | null>(null);
   const [activeRowIndex, setActiveRowIndex] = useState<number>(0);
 
   const handleGenerate = () => {
     if (config.maxCol <= config.minCol) return alert("最大列必须大于最小列");
-    const newResult = generateTable(config);
+    // 如果用户输入非法或为空，兜底使用 5.0
+    const finalConfig = {
+      ...config,
+      maxDiff: isNaN(config.maxDiff) || config.maxDiff <= 0 ? 5.0 : config.maxDiff
+    };
+    const newResult = generateTable(finalConfig);
     setResult(newResult);
-    setActiveRowIndex(0); // 默认显示第一行
+    setActiveRowIndex(0); 
   };
 
   const exportExcel = () => {
@@ -35,7 +41,8 @@ const App: React.FC = () => {
     const data = result.rows.map(row => ({
       '行号': row.rowIndex,
       ...row.values,
-      '期望值': row.actualExpectation.toFixed(2),
+      '目标期望': row.targetExpectation.toFixed(2),
+      '实际期望': row.actualExpectation.toFixed(2),
       '合计': row.sum + '%'
     }));
     const ws = XLSX.utils.json_to_sheet(data);
@@ -44,7 +51,6 @@ const App: React.FC = () => {
     XLSX.writeFile(wb, "正态分布表.xlsx");
   };
 
-  // 准备图表数据
   const chartData = useMemo(() => {
     if (!result || !result.rows[activeRowIndex]) return [];
     const row = result.rows[activeRowIndex];
@@ -63,13 +69,18 @@ const App: React.FC = () => {
         <h1 className="text-2xl font-bold text-gray-800">正态分布数据生成器</h1>
       </header>
 
-      {/* 控制面板 */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">第一行期望值</label>
             <input type="number" step="0.1" value={config.firstRowExpectation} 
               onChange={e => setConfig({...config, firstRowExpectation: parseFloat(e.target.value)})}
+              className="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-600 mb-1">期望跨度 (Max-Min)</label>
+            <input type="number" step="0.1" value={config.maxDiff} placeholder="默认 5.0"
+              onChange={e => setConfig({...config, maxDiff: parseFloat(e.target.value)})}
               className="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500" />
           </div>
           <div>
@@ -92,7 +103,6 @@ const App: React.FC = () => {
 
       {result && (
         <div className="space-y-6">
-          {/* 图表展示区 */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div className="flex items-center gap-2 mb-4 text-gray-700 font-bold">
               <BarChart3 size={20} className="text-indigo-500" />
@@ -126,10 +136,8 @@ const App: React.FC = () => {
                 </AreaChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-center text-xs text-gray-400 mt-4 italic">提示：在下方表格点击不同行可切换曲线</p>
           </div>
 
-          {/* 数据表格区 */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="p-4 border-b flex justify-between items-center bg-gray-50">
               <span className="font-bold text-gray-700">数据预览 (共16行)</span>

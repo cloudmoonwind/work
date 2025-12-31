@@ -3,6 +3,7 @@ export interface TableConfig {
   firstRowExpectation: number;
   minCol: number;
   maxCol: number;
+  maxDiff: number; // 最大最小期望差值
 }
 
 export interface RowData {
