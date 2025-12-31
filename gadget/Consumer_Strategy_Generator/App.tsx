@@ -19,14 +19,13 @@ const App: React.FC = () => {
     firstRowExpectation: 8.0,
     minCol: 5,
     maxCol: 15,
-    maxDiff: 5.0 // 默认跨度设为 5
+    maxDiff: 5.0 
   });
   const [result, setResult] = useState<TableResult | null>(null);
   const [activeRowIndex, setActiveRowIndex] = useState<number>(0);
 
   const handleGenerate = () => {
     if (config.maxCol <= config.minCol) return alert("最大列必须大于最小列");
-    // 如果用户输入非法或为空，兜底使用 5.0
     const finalConfig = {
       ...config,
       maxDiff: isNaN(config.maxDiff) || config.maxDiff <= 0 ? 5.0 : config.maxDiff
@@ -38,17 +37,49 @@ const App: React.FC = () => {
 
   const exportExcel = () => {
     if (!result) return;
-    const data = result.rows.map(row => ({
-      '行号': row.rowIndex,
-      ...row.values,
-      '目标期望': row.targetExpectation.toFixed(2),
-      '实际期望': row.actualExpectation.toFixed(2),
-      '合计': row.sum + '%'
-    }));
-    const ws = XLSX.utils.json_to_sheet(data);
+    const { columns, rows } = result;
+
+    // 1. 导出表第一行：首列“展示次数”，后面是 number-number
+    const exportRow1 = [
+      "展示次数", 
+      ...columns.map(c => `${c}-${c}`)
+    ];
+
+    // 2. 导出表第二行：首列“任务时长分钟”，后面是 (c-1)*3+1 到 c*3
+    const exportRow2 = [
+      "任务时长分钟",
+      ...columns.map(c => `${(c - 1) * 3 + 1}-${c * 3}`)
+    ];
+
+    // 3. 构建 16 行数据的标签序列
+    const retentionLabels = [
+      "首日",
+      "2日留存", "3日留存", "4日留存", "5日留存", "6日留存", "7日留存", 
+      "8日留存", "9日留存", "10日留存", "11日留存", "12日留存", "13日留存", 
+      "14日留存", "15日留存"
+    ];
+
+    // 4. 组装数据行（将 16 行数据映射到上述标签）
+    const dataRows = rows.map((row, i) => {
+      const label = retentionLabels[i] || `${i + 1}日留存`;
+      return [
+        label,
+        ...columns.map(c => row.values[c] || 0)
+      ];
+    });
+
+    // 5. 最终 AOA 结构
+    const finalExcelData = [
+      exportRow1,
+      exportRow2,
+      ...dataRows
+    ];
+
+    // 执行导出
+    const ws = XLSX.utils.aoa_to_sheet(finalExcelData);
     const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-    XLSX.writeFile(wb, "正态分布表.xlsx");
+    XLSX.utils.book_append_sheet(wb, ws, "数据表");
+    XLSX.writeFile(wb, "正态分布数据导出.xlsx");
   };
 
   const chartData = useMemo(() => {
@@ -69,6 +100,7 @@ const App: React.FC = () => {
         <h1 className="text-2xl font-bold text-gray-800">正态分布数据生成器</h1>
       </header>
 
+      {/* 配置区域 */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div>
@@ -103,10 +135,11 @@ const App: React.FC = () => {
 
       {result && (
         <div className="space-y-6">
+          {/* 图表展示区 */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div className="flex items-center gap-2 mb-4 text-gray-700 font-bold">
               <BarChart3 size={20} className="text-indigo-500" />
-              <span>第 {activeRowIndex + 1} 行分布曲线预览 (期望值: {result.rows[activeRowIndex].actualExpectation.toFixed(2)})</span>
+              <span>第 {activeRowIndex + 1} 行预览 - 实际期望: {result.rows[activeRowIndex].actualExpectation.toFixed(2)}</span>
             </div>
             <div className="h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
@@ -138,18 +171,19 @@ const App: React.FC = () => {
             </div>
           </div>
 
+          {/* 表格预览区 */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div className="p-4 border-b flex justify-between items-center bg-gray-50">
-              <span className="font-bold text-gray-700">数据预览 (共16行)</span>
+              <span className="font-bold text-gray-700 underline underline-offset-4 decoration-indigo-200">数据预览</span>
               <button onClick={exportExcel} className="flex items-center gap-2 text-green-700 bg-green-50 px-3 py-1.5 rounded-md hover:bg-green-100 font-semibold border border-green-200 transition">
-                <FileSpreadsheet size={18} /> 导出 Excel
+                <FileSpreadsheet size={18} /> 导出规范 Excel
               </button>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="p-3 border-b text-left">行</th>
+                    <th className="p-3 border-b text-left">行号</th>
                     {result.columns.map(c => <th key={c} className="p-3 border-b text-center text-gray-400 font-normal">{c}</th>)}
                     <th className="p-3 border-b text-right text-indigo-600">实际期望</th>
                   </tr>
