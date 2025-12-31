@@ -45,13 +45,13 @@ const App: React.FC = () => {
       ...columns.map(c => `${c}-${c}`)
     ];
 
-    // 2. 导出表第二行：首列“任务时长分钟”，后面是 (c-1)*3+1 到 c*3
+    // 2. 导出表第二行：首列“任务时长分钟”，公式更新为 c*3 到 c*3+2
     const exportRow2 = [
       "任务时长分钟",
-      ...columns.map(c => `${(c - 1) * 3 + 1}-${c * 3}`)
+      ...columns.map(c => `${c * 3}-${c * 3 + 2}`)
     ];
 
-    // 3. 构建 16 行数据的标签序列
+    // 3. 构建 15 行数据的标签序列
     const retentionLabels = [
       "首日",
       "2日留存", "3日留存", "4日留存", "5日留存", "6日留存", "7日留存", 
@@ -59,7 +59,7 @@ const App: React.FC = () => {
       "14日留存", "15日留存"
     ];
 
-    // 4. 组装数据行（将 16 行数据映射到上述标签）
+    // 4. 组装数据行（将 15 行数据映射到上述标签）
     const dataRows = rows.map((row, i) => {
       const label = retentionLabels[i] || `${i + 1}日留存`;
       return [

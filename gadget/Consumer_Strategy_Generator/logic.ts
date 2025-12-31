@@ -38,9 +38,7 @@ function adjustToUnimodal(
   const attempts = 5;
   for (let a = 0; a < attempts; a++) {
     // 目标峰值高度在 [25, 50] 之间，对应的 sigma 范围大约在 [0.8, 1.6]
-    // 随机一个基础 sigma
     const baseSigma = 0.8 + Math.random() * 0.8;
-    // 随机一个偏斜因子 [0.7, 1.4]
     const skew = 0.7 + Math.random() * 0.7;
     const sigmaLeft = baseSigma * skew;
     const sigmaRight = baseSigma / skew;
@@ -84,7 +82,7 @@ function adjustToUnimodal(
       else values[peakIdx] += step;
     }
 
-    // 终极搬运优化：同时优化期望值和峰值约束
+    // 终极搬运优化
     iter = 300;
     while (iter-- > 0) {
       const currentWS = values.reduce((s, v, i) => s + v * colNames[i], 0);
@@ -101,12 +99,9 @@ function adjustToUnimodal(
           if (isUnimodal(values, peakIdx)) {
             const nextM = (currentWS - colNames[i] + colNames[j]) / targetSum;
             const nextPeak = Math.max(...values);
-            
-            // 评分机制：优先让期望值更准，同时惩罚超出 [25, 50] 的峰值
             const mImprovement = Math.abs(currentM - targetExpectation) - Math.abs(nextM - targetExpectation);
             
             let peakScore = 0;
-            // 如果当前峰值不在范围内，增加对范围内移动的巨大奖励
             if (nextPeak >= 25 && nextPeak <= 50) peakScore += 0.5;
             if (currentPeak < 25 && nextPeak > currentPeak) peakScore += 0.3;
             if (currentPeak > 50 && nextPeak < currentPeak) peakScore += 0.3;
@@ -127,7 +122,6 @@ function adjustToUnimodal(
 
     const finalM = values.reduce((s, v, i) => s + v * colNames[i], 0) / targetSum;
     const finalPeak = Math.max(...values);
-    // 全局评价分：期望误差 + 峰值违规惩罚
     let globalErr = Math.abs(finalM - targetExpectation);
     if (finalPeak < 25 || finalPeak > 50) globalErr += 10; 
 
@@ -144,26 +138,26 @@ export function generateTable(config: TableConfig): TableResult {
   const { firstRowExpectation, minCol, maxCol, maxDiff } = config;
   const colNames = Array.from({ length: maxCol - minCol + 1 }, (_, i) => minCol + i);
   const rows: RowData[] = [];
-  const expectations = new Array(16);
+  const TOTAL_ROWS = 15; // 更改为 15 行
+  const expectations = new Array(TOTAL_ROWS);
 
   // 1. 设置目标期望值路径
   expectations[0] = firstRowExpectation;
   expectations[1] = firstRowExpectation + 0.8;
-  // 第三行强制设置，满足 0.1-0.3 差值要求
   expectations[2] = firstRowExpectation - 0.2;
 
   const targetMinExp = expectations[1] - maxDiff;
-  const decaySteps = 13;
+  const decaySteps = TOTAL_ROWS - 3; // 15 - 3 = 12
   const totalDecay = expectations[2] - targetMinExp;
   const stepSize = totalDecay / decaySteps;
 
-  for (let i = 3; i < 16; i++) {
+  for (let i = 3; i < TOTAL_ROWS; i++) {
     const jitter = (Math.random() - 0.5) * 0.05;
     expectations[i] = expectations[i - 1] - (stepSize + jitter);
   }
 
   // 2. 生成行数据
-  for (let r = 0; r < 16; r++) {
+  for (let r = 0; r < TOTAL_ROWS; r++) {
     const targetE = expectations[r];
     const finalValues = adjustToUnimodal(colNames, targetE);
 
