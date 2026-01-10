@@ -1,0 +1,481 @@
+{
+  "locations": [
+    {
+      "id": "loc_001",
+      "name": "中央喷泉广场",
+      "nameEn": "Central Fountain Plaza",
+      "type": "public",
+      "category": "plaza",
+      "position": {
+        "x": 500,
+        "y": 550
+      },
+      "zoneId": "zone_001",
+      "nearestNodes": ["node_010", "node_011", "node_012", "node_013"],
+      "status": "active",
+      "description": "城市的中心地标，所有道路在此交汇。喷泉在阳光下泛起彩虹，是市民最喜爱的集会场所。",
+      "openHours": "00:00-24:00",
+      "tags": ["landmark", "meeting", "central"],
+      "interactions": ["rest", "meet", "watch_fountain", "event"],
+      "icon": "fountain",
+      "importance": 10
+    },
+    {
+      "id": "loc_002",
+      "name": "钟楼",
+      "nameEn": "Clock Tower",
+      "type": "public",
+      "category": "cultural",
+      "position": {
+        "x": 480,
+        "y": 480
+      },
+      "zoneId": "zone_001",
+      "nearestNodes": ["node_010", "node_014"],
+      "status": "active",
+      "description": "古老的钟楼，每整点报时，钟声响彻全城。可登顶俯瞰整座梦想城。",
+      "openHours": "08:00-20:00",
+      "tags": ["landmark", "cultural", "viewpoint"],
+      "interactions": ["visit", "climb", "view_city"],
+      "icon": "tower",
+      "importance": 9
+    },
+    {
+      "id": "loc_003",
+      "name": "商业街",
+      "nameEn": "Shopping Street",
+      "type": "public",
+      "category": "commercial",
+      "position": {
+        "x": 700,
+        "y": 500
+      },
+      "zoneId": "zone_002",
+      "nearestNodes": ["node_020", "node_021"],
+      "status": "active",
+      "description": "繁华的商业街，各类商店林立。从时尚服饰到电子产品，应有尽有。",
+      "openHours": "10:00-22:00",
+      "tags": ["shopping", "commercial", "bustling"],
+      "interactions": ["shop", "browse", "buy"],
+      "icon": "shop",
+      "importance": 8,
+      "capacity": 200
+    },
+    {
+      "id": "loc_004",
+      "name": "小吃街",
+      "nameEn": "Food Street",
+      "type": "public",
+      "category": "food",
+      "position": {
+        "x": 680,
+        "y": 600
+      },
+      "zoneId": "zone_004",
+      "nearestNodes": ["node_021", "node_025"],
+      "status": "active",
+      "description": "美食的天堂，汇聚各地特色小吃。从早到晚，香气四溢。",
+      "openHours": "08:00-02:00",
+      "tags": ["food", "restaurant", "diverse"],
+      "interactions": ["eat", "taste", "explore"],
+      "icon": "food",
+      "importance": 8,
+      "capacity": 150
+    },
+    {
+      "id": "loc_005",
+      "name": "游戏大厅",
+      "nameEn": "Game Center",
+      "type": "public",
+      "category": "entertainment",
+      "position": {
+        "x": 730,
+        "y": 550
+      },
+      "zoneId": "zone_003",
+      "nearestNodes": ["node_022", "node_023"],
+      "status": "active",
+      "description": "大型娱乐设施，拥有最新的街机、VR设备和电竞区。年轻人的聚集地。",
+      "openHours": "10:00-23:00",
+      "tags": ["entertainment", "gaming", "social"],
+      "interactions": ["play", "compete", "socialize"],
+      "icon": "game",
+      "importance": 7,
+      "capacity": 100
+    },
+    {
+      "id": "loc_006",
+      "name": "网吧",
+      "nameEn": "Internet Cafe",
+      "type": "public",
+      "category": "entertainment",
+      "position": {
+        "x": 720,
+        "y": 650
+      },
+      "zoneId": "zone_004",
+      "nearestNodes": ["node_025", "node_026"],
+      "status": "active",
+      "description": "24小时营业的网吧，高配置电脑，舒适的环境。电竞选手的训练场。",
+      "openHours": "00:00-24:00",
+      "tags": ["internet", "gaming", "24hours"],
+      "interactions": ["surf", "game", "study"],
+      "icon": "computer",
+      "importance": 6,
+      "capacity": 80
+    },
+    {
+      "id": "loc_007",
+      "name": "书店",
+      "nameEn": "Bookstore",
+      "type": "public",
+      "category": "cultural",
+      "position": {
+        "x": 650,
+        "y": 480
+      },
+      "zoneId": "zone_002",
+      "nearestNodes": ["node_020", "node_015"],
+      "status": "active",
+      "description": "独立书店，精心挑选的书籍，温馨的阅读角落。还提供咖啡和轻食。",
+      "openHours": "09:00-21:00",
+      "tags": ["books", "reading", "quiet"],
+      "interactions": ["browse", "read", "buy_book"],
+      "icon": "book",
+      "importance": 7,
+      "capacity": 50
+    },
+    {
+      "id": "loc_008",
+      "name": "紫藤小区",
+      "nameEn": "Wisteria Residential Complex",
+      "type": "private",
+      "category": "residential",
+      "position": {
+        "x": 320,
+        "y": 600
+      },
+      "zoneId": "zone_005",
+      "nearestNodes": ["node_030", "node_031"],
+      "status": "active",
+      "description": "宁静的居住区，绿化良好。这是AI角色温馨的家，每个单元都有不同的故事。",
+      "openHours": "00:00-24:00",
+      "tags": ["home", "residential", "peaceful"],
+      "interactions": ["rest", "sleep", "personal_time"],
+      "icon": "home",
+      "importance": 10,
+      "isHome": true
+    },
+    {
+      "id": "loc_009",
+      "name": "24小时便利店",
+      "nameEn": "24/7 Convenience Store",
+      "type": "public",
+      "category": "service",
+      "position": {
+        "x": 350,
+        "y": 580
+      },
+      "zoneId": "zone_005",
+      "nearestNodes": ["node_030", "node_012"],
+      "status": "active",
+      "description": "小区旁的便利店，全天候营业。深夜想吃泡面的好去处。",
+      "openHours": "00:00-24:00",
+      "tags": ["convenience", "24hours", "nearby"],
+      "interactions": ["buy", "chat"],
+      "icon": "store",
+      "importance": 7,
+      "capacity": 20
+    },
+    {
+      "id": "loc_010",
+      "name": "阳光超市",
+      "nameEn": "Sunshine Supermarket",
+      "type": "public",
+      "category": "commercial",
+      "position": {
+        "x": 380,
+        "y": 650
+      },
+      "zoneId": "zone_006",
+      "nearestNodes": ["node_031", "node_032"],
+      "status": "active",
+      "description": "大型超市，商品齐全，价格实惠。周末采购的首选之地。",
+      "openHours": "07:00-22:00",
+      "tags": ["supermarket", "shopping", "groceries"],
+      "interactions": ["shop", "buy", "browse"],
+      "icon": "cart",
+      "importance": 8,
+      "capacity": 150
+    },
+    {
+      "id": "loc_011",
+      "name": "老李修理铺",
+      "nameEn": "Lao Li's Repair Shop",
+      "type": "public",
+      "category": "service",
+      "position": {
+        "x": 300,
+        "y": 680
+      },
+      "zoneId": "zone_006",
+      "nearestNodes": ["node_032", "node_033"],
+      "status": "active",
+      "description": "开了二十年的老店，李师傅能修任何东西。街坊邻居的好帮手。",
+      "openHours": "08:00-19:00",
+      "tags": ["repair", "service", "traditional"],
+      "interactions": ["repair", "chat", "learn"],
+      "icon": "wrench",
+      "importance": 6,
+      "capacity": 10
+    },
+    {
+      "id": "loc_012",
+      "name": "梦想城学校",
+      "nameEn": "Dream City School",
+      "type": "public",
+      "category": "education",
+      "position": {
+        "x": 420,
+        "y": 300
+      },
+      "zoneId": "zone_007",
+      "nearestNodes": ["node_040", "node_041"],
+      "status": "active",
+      "description": "城市主要学府，AI们在这里学习知识，结交朋友，成长进步。",
+      "openHours": "07:00-18:00",
+      "tags": ["education", "learning", "growth"],
+      "interactions": ["study", "attend_class", "socialize"],
+      "icon": "school",
+      "importance": 10,
+      "capacity": 300
+    },
+    {
+      "id": "loc_013",
+      "name": "城市图书馆",
+      "nameEn": "City Library",
+      "type": "public",
+      "category": "cultural",
+      "position": {
+        "x": 480,
+        "y": 320
+      },
+      "zoneId": "zone_008",
+      "nearestNodes": ["node_041", "node_042"],
+      "status": "active",
+      "description": "知识的宝库，藏书丰富。安静的阅读空间，智慧的海洋。",
+      "openHours": "08:00-22:00",
+      "tags": ["library", "knowledge", "quiet"],
+      "interactions": ["read", "study", "borrow_book"],
+      "icon": "library",
+      "importance": 9,
+      "capacity": 120
+    },
+    {
+      "id": "loc_014",
+      "name": "星光体育馆",
+      "nameEn": "Starlight Sports Center",
+      "type": "public",
+      "category": "sports",
+      "position": {
+        "x": 400,
+        "y": 380
+      },
+      "zoneId": "zone_009",
+      "nearestNodes": ["node_040", "node_043"],
+      "status": "active",
+      "description": "现代化的室内运动场所，篮球、羽毛球、游泳池应有尽有。",
+      "openHours": "06:00-22:00",
+      "tags": ["sports", "fitness", "health"],
+      "interactions": ["exercise", "play_sports", "train"],
+      "icon": "sports",
+      "importance": 7,
+      "capacity": 200
+    },
+    {
+      "id": "loc_015",
+      "name": "城市医院",
+      "nameEn": "City Hospital",
+      "type": "public",
+      "category": "medical",
+      "position": {
+        "x": 650,
+        "y": 340
+      },
+      "zoneId": "zone_010",
+      "nearestNodes": ["node_050", "node_051"],
+      "status": "active",
+      "description": "医疗中心，24小时急诊。白衣天使们守护着每一个生命。",
+      "openHours": "00:00-24:00",
+      "tags": ["medical", "emergency", "care"],
+      "interactions": ["visit_doctor", "checkup", "rest"],
+      "icon": "hospital",
+      "importance": 9,
+      "capacity": 100
+    },
+    {
+      "id": "loc_016",
+      "name": "星辰公园",
+      "nameEn": "Star Park",
+      "type": "public",
+      "category": "nature",
+      "position": {
+        "x": 450,
+        "y": 850
+      },
+      "zoneId": "zone_012",
+      "nearestNodes": ["node_060", "node_061"],
+      "status": "active",
+      "description": "城市最大的绿地，草坪、树木、花坛。晨跑、野餐、放风筝的好地方。",
+      "openHours": "00:00-24:00",
+      "tags": ["nature", "relaxation", "outdoor"],
+      "interactions": ["walk", "picnic", "play"],
+      "icon": "tree",
+      "importance": 8,
+      "capacity": 500
+    },
+    {
+      "id": "loc_017",
+      "name": "玫瑰花园",
+      "nameEn": "Rose Garden",
+      "type": "public",
+      "category": "nature",
+      "position": {
+        "x": 550,
+        "y": 880
+      },
+      "zoneId": "zone_013",
+      "nearestNodes": ["node_061", "node_062"],
+      "status": "active",
+      "description": "精致的花园，各色玫瑰竞相绽放。恋人约会、摄影爱好者的天堂。",
+      "openHours": "06:00-20:00",
+      "tags": ["nature", "romantic", "photography"],
+      "interactions": ["admire", "photograph", "date"],
+      "icon": "flower",
+      "importance": 7,
+      "capacity": 80
+    },
+    {
+      "id": "loc_018",
+      "name": "镜湖",
+      "nameEn": "Mirror Lake",
+      "type": "public",
+      "category": "nature",
+      "position": {
+        "x": 380,
+        "y": 920
+      },
+      "zoneId": "zone_014",
+      "nearestNodes": ["node_060", "node_063"],
+      "status": "active",
+      "description": "清澈的湖泊，水面如镜。可以划船、钓鱼，或只是静静地坐在湖边。",
+      "openHours": "00:00-24:00",
+      "tags": ["nature", "water", "peaceful"],
+      "interactions": ["boat", "fish", "relax"],
+      "icon": "water",
+      "importance": 8,
+      "capacity": 150
+    },
+    {
+      "id": "loc_019",
+      "name": "希望流浪动物收容所",
+      "nameEn": "Hope Animal Shelter",
+      "type": "public",
+      "category": "service",
+      "position": {
+        "x": 620,
+        "y": 900
+      },
+      "zoneId": "zone_015",
+      "nearestNodes": ["node_062", "node_064"],
+      "status": "active",
+      "description": "救助和照顾流浪动物的爱心机构。可以领养宠物，或做志愿者。",
+      "openHours": "09:00-18:00",
+      "tags": ["animals", "charity", "volunteer"],
+      "interactions": ["volunteer", "adopt", "visit_animals"],
+      "icon": "paw",
+      "importance": 6,
+      "capacity": 30
+    },
+    {
+      "id": "loc_020",
+      "name": "星空天文台",
+      "nameEn": "Starry Observatory",
+      "type": "public",
+      "category": "science",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "zoneId": "zone_011",
+      "nearestNodes": ["node_070", "node_071"],
+      "status": "active",
+      "description": "位于城市最高点，观测星空的科学圣地。定期举办天文科普活动。",
+      "openHours": "10:00-23:00",
+      "tags": ["science", "astronomy", "education"],
+      "interactions": ["observe", "learn", "stargaze"],
+      "icon": "telescope",
+      "importance": 8,
+      "capacity": 50
+    },
+    {
+      "id": "loc_021",
+      "name": "梦想河",
+      "nameEn": "Dream River",
+      "type": "special",
+      "category": "nature",
+      "position": {
+        "x": 460,
+        "y": 500
+      },
+      "zoneId": null,
+      "nearestNodes": null,
+      "status": "active",
+      "description": "蜿蜒流淌的河流，从西北向东南贯穿城市。河岸有步道和绿化带。",
+      "openHours": "00:00-24:00",
+      "tags": ["nature", "water", "scenic"],
+      "interactions": ["walk", "view"],
+      "icon": "river",
+      "importance": 7,
+      "isRiver": true,
+      "riverPath": [
+        {"x": 400, "y": 350},
+        {"x": 420, "y": 400},
+        {"x": 450, "y": 480},
+        {"x": 470, "y": 530},
+        {"x": 490, "y": 600},
+        {"x": 510, "y": 670},
+        {"x": 520, "y": 720}
+      ]
+    },
+    {
+      "id": "loc_022",
+      "name": "希望小石桥",
+      "nameEn": "Hope Stone Bridge",
+      "type": "special",
+      "category": "landmark",
+      "position": {
+        "x": 480,
+        "y": 520
+      },
+      "zoneId": "zone_001",
+      "nearestNodes": ["node_012", "node_013"],
+      "status": "active",
+      "description": "横跨梦想河的古老石桥，连接城市东西。桥上是观赏河景的绝佳位置。",
+      "openHours": "00:00-24:00",
+      "tags": ["landmark", "bridge", "viewpoint"],
+      "interactions": ["cross", "view", "photograph"],
+      "icon": "bridge",
+      "importance": 7,
+      "isBridge": true
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-09",
+    "totalLocations": 22,
+    "publicLocations": 20,
+    "privateLocations": 1,
+    "specialLocations": 1
+  }
+}

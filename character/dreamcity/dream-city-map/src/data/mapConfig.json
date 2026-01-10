@@ -1,0 +1,340 @@
+{
+  "viewport": {
+    "width": 1000,
+    "height": 1200,
+    "padding": 50,
+    "minZoom": 0.5,
+    "maxZoom": 3,
+    "defaultZoom": 1
+  },
+  "cityBoundary": {
+    "shape": "ginkgo",
+    "description": "银杏叶形状，下窄上宽",
+    "path": "M 500,100 Q 450,120 420,150 Q 390,180 370,220 Q 350,260 340,310 Q 330,360 320,420 Q 310,480 305,550 Q 300,620 300,700 Q 300,780 320,860 Q 340,920 380,970 Q 420,1010 480,1030 Q 520,1040 550,1040 Q 590,1040 630,1030 Q 680,1010 720,970 Q 760,920 780,860 Q 800,780 800,700 Q 800,620 795,550 Q 790,480 780,420 Q 770,360 760,310 Q 750,260 730,220 Q 710,180 680,150 Q 650,120 600,100 Q 570,90 540,90 Q 520,90 500,100 Z",
+    "fill": "#FFF9E6",
+    "stroke": "#D4A574",
+    "strokeWidth": 4,
+    "shadow": {
+      "enabled": true,
+      "color": "rgba(212, 165, 116, 0.3)",
+      "blur": 10,
+      "offsetX": 2,
+      "offsetY": 2
+    }
+  },
+  "outerRegions": [
+    {
+      "id": "region_east",
+      "name": "东部沙滩海洋",
+      "direction": "east",
+      "position": "right",
+      "colors": {
+        "primary": "#4A90E2",
+        "secondary": "#87CEEB",
+        "gradient": ["#87CEEB", "#4A90E2", "#1E90FF"]
+      },
+      "boundary": {
+        "type": "gradient",
+        "width": 80,
+        "startPath": "M 800,200 Q 810,300 820,400 Q 830,500 835,600 Q 830,700 820,800 Q 810,900 800,1000",
+        "endPath": "M 950,200 Q 960,300 970,400 Q 980,500 985,600 Q 980,700 970,800 Q 960,900 950,1000"
+      },
+      "pattern": "wave",
+      "patternConfig": {
+        "type": "wave",
+        "amplitude": 8,
+        "frequency": 0.02,
+        "opacity": 0.25
+      },
+      "opacity": 0.4,
+      "description": "碧蓝的海洋，金色的沙滩"
+    },
+    {
+      "id": "region_west",
+      "name": "西部丘陵草地",
+      "direction": "west",
+      "position": "left",
+      "colors": {
+        "primary": "#9ACD32",
+        "secondary": "#F0E68C",
+        "gradient": ["#F0E68C", "#9ACD32", "#6B8E23"]
+      },
+      "boundary": {
+        "type": "gradient",
+        "width": 80,
+        "startPath": "M 200,200 Q 190,300 180,400 Q 170,500 165,600 Q 170,700 180,800 Q 190,900 200,1000",
+        "endPath": "M 50,200 Q 40,300 30,400 Q 20,500 15,600 Q 20,700 30,800 Q 40,900 50,1000"
+      },
+      "pattern": "grass",
+      "patternConfig": {
+        "type": "grass",
+        "density": 0.15,
+        "height": 6,
+        "opacity": 0.3
+      },
+      "opacity": 0.4,
+      "description": "起伏的丘陵，翠绿的草地"
+    },
+    {
+      "id": "region_north",
+      "name": "北部群山雪峰",
+      "direction": "north",
+      "position": "top",
+      "colors": {
+        "primary": "#708090",
+        "secondary": "#F0F8FF",
+        "gradient": ["#F0F8FF", "#B0C4DE", "#708090", "#2F4F4F"]
+      },
+      "boundary": {
+        "type": "gradient",
+        "width": 100,
+        "startPath": "M 300,100 Q 350,90 400,85 Q 450,80 500,80 Q 550,80 600,85 Q 650,90 700,100",
+        "endPath": "M 250,0 Q 325,0 400,0 Q 475,0 500,0 Q 525,0 600,0 Q 675,0 750,0"
+      },
+      "pattern": "mountain",
+      "patternConfig": {
+        "type": "mountain",
+        "peaks": 5,
+        "height": 30,
+        "opacity": 0.35
+      },
+      "opacity": 0.45,
+      "description": "巍峨的山峦，银装素裹"
+    },
+    {
+      "id": "region_south",
+      "name": "南部平原森林",
+      "direction": "south",
+      "position": "bottom",
+      "colors": {
+        "primary": "#228B22",
+        "secondary": "#90EE90",
+        "gradient": ["#90EE90", "#32CD32", "#228B22", "#006400"]
+      },
+      "boundary": {
+        "type": "gradient",
+        "width": 120,
+        "startPath": "M 300,1040 Q 350,1045 400,1048 Q 450,1050 500,1050 Q 550,1050 600,1048 Q 650,1045 700,1040",
+        "endPath": "M 200,1150 Q 300,1160 400,1165 Q 450,1167 500,1167 Q 550,1167 600,1165 Q 700,1160 800,1150"
+      },
+      "pattern": "tree",
+      "patternConfig": {
+        "type": "tree",
+        "count": 20,
+        "size": 15,
+        "opacity": 0.3
+      },
+      "opacity": 0.4,
+      "description": "广阔的平原，茂密的森林"
+    }
+  ],
+  "river": {
+    "id": "dream_river",
+    "name": "梦想河",
+    "path": [
+      {"x": 400, "y": 350},
+      {"x": 420, "y": 400},
+      {"x": 450, "y": 480},
+      {"x": 470, "y": 530},
+      {"x": 490, "y": 600},
+      {"x": 510, "y": 670},
+      {"x": 520, "y": 720}
+    ],
+    "width": 25,
+    "color": "#87CEEB",
+    "opacity": 0.7,
+    "flow": {
+      "enabled": true,
+      "speed": 1,
+      "direction": "southeast"
+    },
+    "banks": {
+      "width": 3,
+      "color": "#6B8E23",
+      "grassEffect": true
+    },
+    "bridges": [
+      {
+        "id": "hope_bridge",
+        "position": {"x": 480, "y": 520},
+        "width": 40,
+        "style": "stone"
+      }
+    ]
+  },
+  "roadStyle": {
+    "main": {
+      "stroke": "#D4A574",
+      "fill": "#FFFFFF",
+      "strokeWidth": 2,
+      "opacity": 0.95,
+      "width": 10
+    },
+    "branch": {
+      "stroke": "#D4A574",
+      "fill": "#FFFFFF",
+      "strokeWidth": 1.5,
+      "opacity": 0.9,
+      "width": 6
+    },
+    "intersection": {
+      "radius": 4,
+      "fill": "#D4A574",
+      "stroke": "#B8956A",
+      "strokeWidth": 1
+    }
+  },
+  "locationStyle": {
+    "public": {
+      "fill": "#A8D8EA",
+      "stroke": "#D4A574",
+      "strokeWidth": 2,
+      "radius": 20,
+      "opacity": 0.9,
+      "hoverFill": "#7BC8E0",
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(168, 216, 234, 0.5)",
+        "blur": 8
+      }
+    },
+    "private": {
+      "fill": "#FFB6C1",
+      "stroke": "#D4A574",
+      "strokeWidth": 2,
+      "radius": 20,
+      "opacity": 0.9,
+      "hoverFill": "#FF9BB0",
+      "shadow": {
+        "enabled": true,
+        "color": "rgba(255, 182, 193, 0.5)",
+        "blur": 8
+      }
+    },
+    "special": {
+      "fill": "#DDA0DD",
+      "stroke": "#D4A574",
+      "strokeWidth": 2,
+      "radius": 18,
+      "opacity": 0.85
+    },
+    "label": {
+      "fontFamily": "'Ma Shan Zheng', 'Noto Serif SC', serif",
+      "fontSize": 14,
+      "fill": "#5A4A3A",
+      "stroke": "#FFFFFF",
+      "strokeWidth": 3,
+      "offsetY": -25
+    }
+  },
+  "decorativeElements": {
+    "muchaStyle": {
+      "enabled": true,
+      "borderPattern": "floral",
+      "cornerOrnaments": true,
+      "flowingLines": true
+    },
+    "seasonalEffects": {
+      "enabled": false,
+      "current": "spring",
+      "options": ["spring", "summer", "autumn", "winter"]
+    },
+    "lightingEffects": {
+      "enabled": true,
+      "ambient": 1.0,
+      "sunAngle": 45
+    }
+  },
+  "interaction": {
+    "zoom": {
+      "enabled": true,
+      "wheelSensitivity": 0.002,
+      "minZoom": 0.5,
+      "maxZoom": 3
+    },
+    "pan": {
+      "enabled": true,
+      "dragButton": 0,
+      "inertia": true
+    },
+    "locationClick": {
+      "enabled": true,
+      "showInfoPopup": true,
+      "highlightConnectedRoads": true
+    },
+    "pathfinding": {
+      "enabled": true,
+      "showAnimatedPath": true,
+      "pathColor": "#FF6B9D",
+      "animationDuration": 2000
+    }
+  },
+  "infoPopup": {
+    "style": {
+      "backgroundColor": "#FFFEF9",
+      "border": "2px solid #D4A574",
+      "borderRadius": 12,
+      "padding": 15,
+      "fontSize": 14,
+      "fontFamily": "'Noto Sans SC', sans-serif",
+      "shadow": "0 4px 12px rgba(0,0,0,0.15)",
+      "maxWidth": 300
+    },
+    "arrow": {
+      "enabled": true,
+      "size": 10,
+      "color": "#FFFEF9"
+    },
+    "animation": {
+      "type": "fade-scale",
+      "duration": 200
+    }
+  },
+  "theme": {
+    "name": "Mucha Dream",
+    "colors": {
+      "background": "#FFF9E6",
+      "primary": "#D4A574",
+      "secondary": "#A8D8EA",
+      "accent": "#FFB6C1",
+      "text": "#5A4A3A",
+      "textLight": "#8B7D6B"
+    },
+    "fonts": {
+      "title": "'Ma Shan Zheng', 'ZCOOL XiaoWei', cursive",
+      "body": "'Noto Sans SC', sans-serif",
+      "decorative": "'ZCOOL QingKe HuangYou', cursive"
+    }
+  },
+  "performance": {
+    "renderMode": "svg",
+    "useCaching": true,
+    "lodEnabled": true,
+    "lodLevels": [
+      {
+        "zoom": 0.5,
+        "detail": "low",
+        "showRoadNodes": false,
+        "simplifyPaths": true
+      },
+      {
+        "zoom": 1.0,
+        "detail": "medium",
+        "showRoadNodes": false,
+        "simplifyPaths": false
+      },
+      {
+        "zoom": 2.0,
+        "detail": "high",
+        "showRoadNodes": true,
+        "simplifyPaths": false
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-09",
+    "author": "Dream City Project",
+    "description": "梦想城地图配置 - 银杏叶形城市，慕夏风格"
+  }
+}

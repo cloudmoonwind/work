@@ -1,0 +1,326 @@
+{
+  "zones": [
+    {
+      "id": "zone_001",
+      "name": "中央核心区",
+      "district": "central",
+      "boundary": [
+        {"x": 460, "y": 500},
+        {"x": 520, "y": 500},
+        {"x": 520, "y": 580},
+        {"x": 460, "y": 580}
+      ],
+      "boundaryNodes": ["node_010", "node_011", "node_012", "node_013", "node_014"],
+      "center": {"x": 490, "y": 540},
+      "area": 4800,
+      "maxLocations": 3,
+      "locationsCount": 3,
+      "locationIds": ["loc_001", "loc_002", "loc_022"],
+      "description": "城市中心，地标建筑聚集"
+    },
+    {
+      "id": "zone_002",
+      "name": "东商业区A",
+      "district": "commercial_east",
+      "boundary": [
+        {"x": 600, "y": 480},
+        {"x": 700, "y": 480},
+        {"x": 700, "y": 540},
+        {"x": 600, "y": 540}
+      ],
+      "boundaryNodes": ["node_015", "node_020", "node_021"],
+      "center": {"x": 650, "y": 510},
+      "area": 6000,
+      "maxLocations": 2,
+      "locationsCount": 2,
+      "locationIds": ["loc_003", "loc_007"],
+      "description": "主要商业街区，购物中心"
+    },
+    {
+      "id": "zone_003",
+      "name": "游戏娱乐区",
+      "district": "commercial_east",
+      "boundary": [
+        {"x": 710, "y": 510},
+        {"x": 750, "y": 510},
+        {"x": 750, "y": 570},
+        {"x": 710, "y": 570}
+      ],
+      "boundaryNodes": ["node_022", "node_023"],
+      "center": {"x": 730, "y": 540},
+      "area": 2400,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_005"],
+      "description": "娱乐设施集中区"
+    },
+    {
+      "id": "zone_004",
+      "name": "餐饮娱乐区",
+      "district": "commercial_east",
+      "boundary": [
+        {"x": 670, "y": 580},
+        {"x": 730, "y": 580},
+        {"x": 730, "y": 660},
+        {"x": 670, "y": 660}
+      ],
+      "boundaryNodes": ["node_021", "node_025", "node_026"],
+      "center": {"x": 700, "y": 620},
+      "area": 4800,
+      "maxLocations": 2,
+      "locationsCount": 2,
+      "locationIds": ["loc_004", "loc_006"],
+      "description": "美食与夜间娱乐区"
+    },
+    {
+      "id": "zone_005",
+      "name": "西居民区A",
+      "district": "residential_west",
+      "boundary": [
+        {"x": 310, "y": 560},
+        {"x": 380, "y": 560},
+        {"x": 380, "y": 630},
+        {"x": 310, "y": 630}
+      ],
+      "boundaryNodes": ["node_030", "node_031"],
+      "center": {"x": 345, "y": 595},
+      "area": 4900,
+      "maxLocations": 2,
+      "locationsCount": 2,
+      "locationIds": ["loc_008", "loc_009"],
+      "description": "主要居住区，生活便利"
+    },
+    {
+      "id": "zone_006",
+      "name": "西居民区B",
+      "district": "residential_west",
+      "boundary": [
+        {"x": 280, "y": 640},
+        {"x": 390, "y": 640},
+        {"x": 390, "y": 710},
+        {"x": 280, "y": 710}
+      ],
+      "boundaryNodes": ["node_031", "node_032", "node_033"],
+      "center": {"x": 335, "y": 675},
+      "area": 7700,
+      "maxLocations": 2,
+      "locationsCount": 2,
+      "locationIds": ["loc_010", "loc_011"],
+      "description": "居住配套服务区"
+    },
+    {
+      "id": "zone_007",
+      "name": "学校区",
+      "district": "education_northwest",
+      "boundary": [
+        {"x": 390, "y": 270},
+        {"x": 450, "y": 270},
+        {"x": 450, "y": 350},
+        {"x": 390, "y": 350}
+      ],
+      "boundaryNodes": ["node_040", "node_041"],
+      "center": {"x": 420, "y": 310},
+      "area": 4800,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_012"],
+      "description": "教育核心区"
+    },
+    {
+      "id": "zone_008",
+      "name": "图书馆区",
+      "district": "education_northwest",
+      "boundary": [
+        {"x": 450, "y": 290},
+        {"x": 500, "y": 290},
+        {"x": 500, "y": 350},
+        {"x": 450, "y": 350}
+      ],
+      "boundaryNodes": ["node_041", "node_042"],
+      "center": {"x": 475, "y": 320},
+      "area": 3000,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_013"],
+      "description": "文化学习区"
+    },
+    {
+      "id": "zone_009",
+      "name": "体育区",
+      "district": "education_northwest",
+      "boundary": [
+        {"x": 370, "y": 360},
+        {"x": 430, "y": 360},
+        {"x": 430, "y": 420},
+        {"x": 370, "y": 420}
+      ],
+      "boundaryNodes": ["node_040", "node_043"],
+      "center": {"x": 400, "y": 390},
+      "area": 3600,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_014"],
+      "description": "运动健身区"
+    },
+    {
+      "id": "zone_010",
+      "name": "医疗区",
+      "district": "medical_northeast",
+      "boundary": [
+        {"x": 620, "y": 320},
+        {"x": 680, "y": 320},
+        {"x": 680, "y": 380},
+        {"x": 620, "y": 380}
+      ],
+      "boundaryNodes": ["node_050", "node_051"],
+      "center": {"x": 650, "y": 350},
+      "area": 3600,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_015"],
+      "description": "医疗服务区"
+    },
+    {
+      "id": "zone_011",
+      "name": "天文台区",
+      "district": "observation_north",
+      "boundary": [
+        {"x": 470, "y": 170},
+        {"x": 530, "y": 170},
+        {"x": 530, "y": 240},
+        {"x": 470, "y": 240}
+      ],
+      "boundaryNodes": ["node_070", "node_071"],
+      "center": {"x": 500, "y": 205},
+      "area": 4200,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_020"],
+      "description": "科学观测区"
+    },
+    {
+      "id": "zone_012",
+      "name": "星辰公园区",
+      "district": "recreation_south",
+      "boundary": [
+        {"x": 400, "y": 810},
+        {"x": 500, "y": 810},
+        {"x": 500, "y": 890},
+        {"x": 400, "y": 890}
+      ],
+      "boundaryNodes": ["node_060", "node_061"],
+      "center": {"x": 450, "y": 850},
+      "area": 8000,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_016"],
+      "description": "城市绿肺，休闲核心"
+    },
+    {
+      "id": "zone_013",
+      "name": "花园区",
+      "district": "recreation_south",
+      "boundary": [
+        {"x": 520, "y": 850},
+        {"x": 590, "y": 850},
+        {"x": 590, "y": 920},
+        {"x": 520, "y": 920}
+      ],
+      "boundaryNodes": ["node_061", "node_062"],
+      "center": {"x": 555, "y": 885},
+      "area": 4900,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_017"],
+      "description": "精致花卉观赏区"
+    },
+    {
+      "id": "zone_014",
+      "name": "镜湖区",
+      "district": "recreation_south",
+      "boundary": [
+        {"x": 340, "y": 870},
+        {"x": 420, "y": 870},
+        {"x": 420, "y": 950},
+        {"x": 340, "y": 950}
+      ],
+      "boundaryNodes": ["node_060", "node_063"],
+      "center": {"x": 380, "y": 910},
+      "area": 6400,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_018"],
+      "description": "水上活动区"
+    },
+    {
+      "id": "zone_015",
+      "name": "收容所区",
+      "district": "recreation_south",
+      "boundary": [
+        {"x": 590, "y": 880},
+        {"x": 650, "y": 880},
+        {"x": 650, "y": 940},
+        {"x": 590, "y": 940}
+      ],
+      "boundaryNodes": ["node_062", "node_064"],
+      "center": {"x": 620, "y": 910},
+      "area": 3600,
+      "maxLocations": 1,
+      "locationsCount": 1,
+      "locationIds": ["loc_019"],
+      "description": "动物救助区"
+    }
+  ],
+  "districts": [
+    {
+      "id": "central",
+      "name": "中央核心区",
+      "color": "#FFD700",
+      "description": "城市心脏，地标聚集"
+    },
+    {
+      "id": "commercial_east",
+      "name": "东部商业区",
+      "color": "#87CEEB",
+      "description": "繁华商业，购物娱乐"
+    },
+    {
+      "id": "residential_west",
+      "name": "西部生活区",
+      "color": "#FFB6C1",
+      "description": "居住为主，生活便利"
+    },
+    {
+      "id": "education_northwest",
+      "name": "西北文教区",
+      "color": "#98D8C8",
+      "description": "教育文化，书香氛围"
+    },
+    {
+      "id": "medical_northeast",
+      "name": "东北医疗区",
+      "color": "#F08080",
+      "description": "医疗服务，健康保障"
+    },
+    {
+      "id": "observation_north",
+      "name": "北部观测区",
+      "color": "#9370DB",
+      "description": "科学探索，星空观测"
+    },
+    {
+      "id": "recreation_south",
+      "name": "南部休闲区",
+      "color": "#90EE90",
+      "description": "自然休闲，生态宜人"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-09",
+    "totalZones": 15,
+    "totalDistricts": 7,
+    "averageZoneArea": 4900,
+    "emptyAreaRatio": 0.35
+  }
+}

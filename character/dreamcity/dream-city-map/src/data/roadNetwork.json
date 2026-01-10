@@ -1,0 +1,637 @@
+{
+  "nodes": [
+    {
+      "id": "node_010",
+      "position": {"x": 500, "y": 540},
+      "type": "intersection",
+      "name": "中央广场北路口",
+      "connectedTo": ["node_011", "node_012", "node_013", "node_014"]
+    },
+    {
+      "id": "node_011",
+      "position": {"x": 520, "y": 560},
+      "type": "intersection",
+      "name": "中央广场东路口",
+      "connectedTo": ["node_010", "node_015"]
+    },
+    {
+      "id": "node_012",
+      "position": {"x": 460, "y": 560},
+      "type": "intersection",
+      "name": "中央广场西路口",
+      "connectedTo": ["node_010", "node_030"]
+    },
+    {
+      "id": "node_013",
+      "position": {"x": 500, "y": 580},
+      "type": "intersection",
+      "name": "中央广场南路口",
+      "connectedTo": ["node_010", "node_060"]
+    },
+    {
+      "id": "node_014",
+      "position": {"x": 480, "y": 500},
+      "type": "junction",
+      "name": "钟楼路口",
+      "connectedTo": ["node_010", "node_040"]
+    },
+    {
+      "id": "node_015",
+      "position": {"x": 600, "y": 500},
+      "type": "intersection",
+      "name": "东部大道路口",
+      "connectedTo": ["node_011", "node_020", "node_050"]
+    },
+    {
+      "id": "node_020",
+      "position": {"x": 680, "y": 500},
+      "type": "intersection",
+      "name": "商业街北口",
+      "connectedTo": ["node_015", "node_021", "node_022"]
+    },
+    {
+      "id": "node_021",
+      "position": {"x": 700, "y": 540},
+      "type": "junction",
+      "name": "商业街中段",
+      "connectedTo": ["node_020", "node_025"]
+    },
+    {
+      "id": "node_022",
+      "position": {"x": 720, "y": 520},
+      "type": "junction",
+      "name": "游戏大厅路口",
+      "connectedTo": ["node_020", "node_023"]
+    },
+    {
+      "id": "node_023",
+      "position": {"x": 740, "y": 560},
+      "type": "endpoint",
+      "name": "东商业区端点",
+      "connectedTo": ["node_022"]
+    },
+    {
+      "id": "node_025",
+      "position": {"x": 690, "y": 600},
+      "type": "intersection",
+      "name": "小吃街路口",
+      "connectedTo": ["node_021", "node_026", "node_060"]
+    },
+    {
+      "id": "node_026",
+      "position": {"x": 720, "y": 640},
+      "type": "endpoint",
+      "name": "网吧路口",
+      "connectedTo": ["node_025"]
+    },
+    {
+      "id": "node_030",
+      "position": {"x": 350, "y": 580},
+      "type": "intersection",
+      "name": "居民区路口",
+      "connectedTo": ["node_012", "node_031", "node_043"]
+    },
+    {
+      "id": "node_031",
+      "position": {"x": 330, "y": 620},
+      "type": "junction",
+      "name": "小区南口",
+      "connectedTo": ["node_030", "node_032"]
+    },
+    {
+      "id": "node_032",
+      "position": {"x": 360, "y": 660},
+      "type": "intersection",
+      "name": "超市路口",
+      "connectedTo": ["node_031", "node_033", "node_060"]
+    },
+    {
+      "id": "node_033",
+      "position": {"x": 300, "y": 690},
+      "type": "endpoint",
+      "name": "修理铺路口",
+      "connectedTo": ["node_032"]
+    },
+    {
+      "id": "node_040",
+      "position": {"x": 420, "y": 330},
+      "type": "intersection",
+      "name": "学校路口",
+      "connectedTo": ["node_014", "node_041", "node_043"]
+    },
+    {
+      "id": "node_041",
+      "position": {"x": 460, "y": 320},
+      "type": "intersection",
+      "name": "图书馆路口",
+      "connectedTo": ["node_040", "node_042", "node_070"]
+    },
+    {
+      "id": "node_042",
+      "position": {"x": 490, "y": 340},
+      "type": "junction",
+      "name": "文教区东口",
+      "connectedTo": ["node_041", "node_050"]
+    },
+    {
+      "id": "node_043",
+      "position": {"x": 390, "y": 400},
+      "type": "intersection",
+      "name": "体育馆路口",
+      "connectedTo": ["node_030", "node_040"]
+    },
+    {
+      "id": "node_050",
+      "position": {"x": 630, "y": 350},
+      "type": "intersection",
+      "name": "医院路口",
+      "connectedTo": ["node_015", "node_042", "node_051"]
+    },
+    {
+      "id": "node_051",
+      "position": {"x": 660, "y": 370},
+      "type": "endpoint",
+      "name": "医院南口",
+      "connectedTo": ["node_050"]
+    },
+    {
+      "id": "node_060",
+      "position": {"x": 450, "y": 800},
+      "type": "intersection",
+      "name": "公园北口",
+      "connectedTo": ["node_013", "node_025", "node_032", "node_061", "node_063"]
+    },
+    {
+      "id": "node_061",
+      "position": {"x": 520, "y": 850},
+      "type": "intersection",
+      "name": "公园东口",
+      "connectedTo": ["node_060", "node_062"]
+    },
+    {
+      "id": "node_062",
+      "position": {"x": 580, "y": 890},
+      "type": "intersection",
+      "name": "花园路口",
+      "connectedTo": ["node_061", "node_064"]
+    },
+    {
+      "id": "node_063",
+      "position": {"x": 380, "y": 890},
+      "type": "intersection",
+      "name": "湖区路口",
+      "connectedTo": ["node_060"]
+    },
+    {
+      "id": "node_064",
+      "position": {"x": 620, "y": 920},
+      "type": "endpoint",
+      "name": "收容所路口",
+      "connectedTo": ["node_062"]
+    },
+    {
+      "id": "node_070",
+      "position": {"x": 490, "y": 250},
+      "type": "intersection",
+      "name": "北部大道",
+      "connectedTo": ["node_041", "node_071"]
+    },
+    {
+      "id": "node_071",
+      "position": {"x": 500, "y": 220},
+      "type": "endpoint",
+      "name": "天文台路口",
+      "connectedTo": ["node_070"]
+    }
+  ],
+  "roads": [
+    {
+      "id": "road_001",
+      "name": "中央大道（北段）",
+      "from": "node_010",
+      "to": "node_014",
+      "width": 10,
+      "type": "main",
+      "path": [
+        {"x": 500, "y": 540},
+        {"x": 490, "y": 520, "control": true},
+        {"x": 480, "y": 500}
+      ]
+    },
+    {
+      "id": "road_002",
+      "name": "环城东路",
+      "from": "node_010",
+      "to": "node_011",
+      "width": 8,
+      "type": "main",
+      "path": [
+        {"x": 500, "y": 540},
+        {"x": 510, "y": 550, "control": true},
+        {"x": 520, "y": 560}
+      ]
+    },
+    {
+      "id": "road_003",
+      "name": "环城西路",
+      "from": "node_010",
+      "to": "node_012",
+      "width": 8,
+      "type": "main",
+      "path": [
+        {"x": 500, "y": 540},
+        {"x": 480, "y": 550, "control": true},
+        {"x": 460, "y": 560}
+      ]
+    },
+    {
+      "id": "road_004",
+      "name": "中央大道（南段）",
+      "from": "node_010",
+      "to": "node_013",
+      "width": 10,
+      "type": "main",
+      "path": [
+        {"x": 500, "y": 540},
+        {"x": 500, "y": 560, "control": true},
+        {"x": 500, "y": 580}
+      ]
+    },
+    {
+      "id": "road_005",
+      "name": "商业大道",
+      "from": "node_011",
+      "to": "node_015",
+      "width": 9,
+      "type": "main",
+      "path": [
+        {"x": 520, "y": 560},
+        {"x": 560, "y": 530, "control": true},
+        {"x": 600, "y": 500}
+      ]
+    },
+    {
+      "id": "road_006",
+      "name": "商业街主路",
+      "from": "node_015",
+      "to": "node_020",
+      "width": 8,
+      "type": "main",
+      "path": [
+        {"x": 600, "y": 500},
+        {"x": 640, "y": 500, "control": true},
+        {"x": 680, "y": 500}
+      ]
+    },
+    {
+      "id": "road_007",
+      "name": "商业街支路",
+      "from": "node_020",
+      "to": "node_021",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 680, "y": 500},
+        {"x": 690, "y": 520, "control": true},
+        {"x": 700, "y": 540}
+      ]
+    },
+    {
+      "id": "road_008",
+      "name": "游戏大厅路",
+      "from": "node_020",
+      "to": "node_022",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 680, "y": 500},
+        {"x": 700, "y": 510, "control": true},
+        {"x": 720, "y": 520}
+      ]
+    },
+    {
+      "id": "road_009",
+      "name": "东商业区内路",
+      "from": "node_022",
+      "to": "node_023",
+      "width": 5,
+      "type": "branch",
+      "path": [
+        {"x": 720, "y": 520},
+        {"x": 730, "y": 540, "control": true},
+        {"x": 740, "y": 560}
+      ]
+    },
+    {
+      "id": "road_010",
+      "name": "小吃街路",
+      "from": "node_021",
+      "to": "node_025",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 700, "y": 540},
+        {"x": 695, "y": 570, "control": true},
+        {"x": 690, "y": 600}
+      ]
+    },
+    {
+      "id": "road_011",
+      "name": "网吧巷",
+      "from": "node_025",
+      "to": "node_026",
+      "width": 5,
+      "type": "branch",
+      "path": [
+        {"x": 690, "y": 600},
+        {"x": 705, "y": 620, "control": true},
+        {"x": 720, "y": 640}
+      ]
+    },
+    {
+      "id": "road_012",
+      "name": "西部大道",
+      "from": "node_012",
+      "to": "node_030",
+      "width": 9,
+      "type": "main",
+      "path": [
+        {"x": 460, "y": 560},
+        {"x": 405, "y": 570, "control": true},
+        {"x": 350, "y": 580}
+      ]
+    },
+    {
+      "id": "road_013",
+      "name": "居民区内路",
+      "from": "node_030",
+      "to": "node_031",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 350, "y": 580},
+        {"x": 340, "y": 600, "control": true},
+        {"x": 330, "y": 620}
+      ]
+    },
+    {
+      "id": "road_014",
+      "name": "超市路",
+      "from": "node_031",
+      "to": "node_032",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 330, "y": 620},
+        {"x": 345, "y": 640, "control": true},
+        {"x": 360, "y": 660}
+      ]
+    },
+    {
+      "id": "road_015",
+      "name": "修理铺巷",
+      "from": "node_032",
+      "to": "node_033",
+      "width": 5,
+      "type": "branch",
+      "path": [
+        {"x": 360, "y": 660},
+        {"x": 330, "y": 675, "control": true},
+        {"x": 300, "y": 690}
+      ]
+    },
+    {
+      "id": "road_016",
+      "name": "文教路",
+      "from": "node_014",
+      "to": "node_040",
+      "width": 8,
+      "type": "main",
+      "path": [
+        {"x": 480, "y": 500},
+        {"x": 465, "y": 440, "control": true},
+        {"x": 450, "y": 380, "control": true},
+        {"x": 420, "y": 330}
+      ]
+    },
+    {
+      "id": "road_017",
+      "name": "图书馆路",
+      "from": "node_040",
+      "to": "node_041",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 420, "y": 330},
+        {"x": 440, "y": 325, "control": true},
+        {"x": 460, "y": 320}
+      ]
+    },
+    {
+      "id": "road_018",
+      "name": "文教东路",
+      "from": "node_041",
+      "to": "node_042",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 460, "y": 320},
+        {"x": 475, "y": 330, "control": true},
+        {"x": 490, "y": 340}
+      ]
+    },
+    {
+      "id": "road_019",
+      "name": "体育馆路",
+      "from": "node_040",
+      "to": "node_043",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 420, "y": 330},
+        {"x": 405, "y": 365, "control": true},
+        {"x": 390, "y": 400}
+      ]
+    },
+    {
+      "id": "road_020",
+      "name": "西部联络道",
+      "from": "node_043",
+      "to": "node_030",
+      "width": 7,
+      "type": "main",
+      "path": [
+        {"x": 390, "y": 400},
+        {"x": 370, "y": 490, "control": true},
+        {"x": 350, "y": 580}
+      ]
+    },
+    {
+      "id": "road_021",
+      "name": "医院路",
+      "from": "node_015",
+      "to": "node_050",
+      "width": 7,
+      "type": "main",
+      "path": [
+        {"x": 600, "y": 500},
+        {"x": 600, "y": 425, "control": true},
+        {"x": 615, "y": 380, "control": true},
+        {"x": 630, "y": 350}
+      ]
+    },
+    {
+      "id": "road_022",
+      "name": "医院东路",
+      "from": "node_042",
+      "to": "node_050",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 490, "y": 340},
+        {"x": 560, "y": 345, "control": true},
+        {"x": 630, "y": 350}
+      ]
+    },
+    {
+      "id": "road_023",
+      "name": "医院南巷",
+      "from": "node_050",
+      "to": "node_051",
+      "width": 5,
+      "type": "branch",
+      "path": [
+        {"x": 630, "y": 350},
+        {"x": 645, "y": 360, "control": true},
+        {"x": 660, "y": 370}
+      ]
+    },
+    {
+      "id": "road_024",
+      "name": "南部大道",
+      "from": "node_013",
+      "to": "node_060",
+      "width": 10,
+      "type": "main",
+      "path": [
+        {"x": 500, "y": 580},
+        {"x": 485, "y": 650, "control": true},
+        {"x": 470, "y": 720, "control": true},
+        {"x": 450, "y": 800}
+      ]
+    },
+    {
+      "id": "road_025",
+      "name": "东南联络道",
+      "from": "node_025",
+      "to": "node_060",
+      "width": 7,
+      "type": "main",
+      "path": [
+        {"x": 690, "y": 600},
+        {"x": 620, "y": 670, "control": true},
+        {"x": 550, "y": 740, "control": true},
+        {"x": 450, "y": 800}
+      ]
+    },
+    {
+      "id": "road_026",
+      "name": "西南联络道",
+      "from": "node_032",
+      "to": "node_060",
+      "width": 7,
+      "type": "main",
+      "path": [
+        {"x": 360, "y": 660},
+        {"x": 390, "y": 710, "control": true},
+        {"x": 420, "y": 760, "control": true},
+        {"x": 450, "y": 800}
+      ]
+    },
+    {
+      "id": "road_027",
+      "name": "公园东路",
+      "from": "node_060",
+      "to": "node_061",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 450, "y": 800},
+        {"x": 485, "y": 825, "control": true},
+        {"x": 520, "y": 850}
+      ]
+    },
+    {
+      "id": "road_028",
+      "name": "花园路",
+      "from": "node_061",
+      "to": "node_062",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 520, "y": 850},
+        {"x": 550, "y": 870, "control": true},
+        {"x": 580, "y": 890}
+      ]
+    },
+    {
+      "id": "road_029",
+      "name": "公园西路",
+      "from": "node_060",
+      "to": "node_063",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 450, "y": 800},
+        {"x": 415, "y": 845, "control": true},
+        {"x": 380, "y": 890}
+      ]
+    },
+    {
+      "id": "road_030",
+      "name": "收容所路",
+      "from": "node_062",
+      "to": "node_064",
+      "width": 5,
+      "type": "branch",
+      "path": [
+        {"x": 580, "y": 890},
+        {"x": 600, "y": 905, "control": true},
+        {"x": 620, "y": 920}
+      ]
+    },
+    {
+      "id": "road_031",
+      "name": "北部大道",
+      "from": "node_041",
+      "to": "node_070",
+      "width": 8,
+      "type": "main",
+      "path": [
+        {"x": 460, "y": 320},
+        {"x": 475, "y": 285, "control": true},
+        {"x": 490, "y": 250}
+      ]
+    },
+    {
+      "id": "road_032",
+      "name": "天文台路",
+      "from": "node_070",
+      "to": "node_071",
+      "width": 6,
+      "type": "branch",
+      "path": [
+        {"x": 490, "y": 250},
+        {"x": 495, "y": 235, "control": true},
+        {"x": 500, "y": 220}
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-09",
+    "totalNodes": 29,
+    "totalRoads": 32,
+    "coordinateSystem": "SVG (0-1000, 0-1200)"
+  }
+}
