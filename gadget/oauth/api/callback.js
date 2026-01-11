@@ -28,16 +28,23 @@ module.exports = async function (req, res) {
 
     res.setHeader("Content-Type", "text/html");
     res.end(`
+      <html>
+      <body>
+      <p>验证成功，正在跳转...</p>
       <script>
-        window.opener.postMessage(
-          'authorization:github:success:' + JSON.stringify({
+        const msg = 'authorization:github:success:' + JSON.stringify({
             token: "${data.access_token}",
             provider: "github"
-          }),
-          "*"
-        );
-        window.close();
+          });
+        
+        // 发送消息给主窗口
+        window.opener.postMessage(msg, "*");
+        
+        // 延迟关闭窗口，确保消息发送成功
+        setTimeout(() => { window.close(); }, 800);
       </script>
+      </body>
+      </html>
     `);
   } catch (e) {
     res.status(500).send(e.toString());
