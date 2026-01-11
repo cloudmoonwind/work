@@ -1,4 +1,5 @@
 {
-  "name": "my-cms-oauth",
-  "version": "1.0.0"
+  "name": "cms-oauth",
+  "version": "1.0.0",
+  "engines": { "node": "18.x" }
 }

@@ -42,20 +42,24 @@ module.exports = async function (req, res) {
             provider: "github"
           });
         
-        function sendMessage() {
-          if (window.opener) {
-            window.opener.postMessage(msg, "*");
-          } else {
-            document.body.innerHTML = "错误：无法找到主窗口 (window.opener is null)，请手动关闭此页面并重试。";
-          }
-        }
+        // 使用 setInterval 持续发送消息，确保主窗口能收到
+        const interval = setInterval(() => {
+            if (window.opener) {
+                window.opener.postMessage(msg, "*");
+            } else {
+                clearInterval(interval);
+                document.body.innerHTML = '<h2 style="color:red">错误：与主窗口失去连接</h2><p>window.opener 为 null。这通常是因为浏览器安全策略或是在新标签页中打开了此链接。</p>';
+            }
+        }, 200);
 
-        // 立即发送一次
-        sendMessage();
-        // 0.5秒后再发送一次，防止主窗口没准备好
-        setTimeout(sendMessage, 500);
-        // 1.5秒后关闭窗口
-        setTimeout(() => { window.close(); }, 3000);
+        // 3秒后停止发送并关闭窗口
+        setTimeout(() => { 
+            // 只有在连接正常的情况下才自动关闭
+            if (window.opener) {
+                clearInterval(interval);
+                window.close();
+            }
+        }, 3000);
       </script>
       </body>
       </html>
