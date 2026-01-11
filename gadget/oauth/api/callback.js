@@ -26,9 +26,14 @@ module.exports = async function (req, res) {
       return;
     }
 
-    res.setHeader("Content-Type", "text/html");
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.end(`
+      <!DOCTYPE html>
       <html>
+      <head>
+        <meta charset="utf-8">
+        <title>验证成功</title>
+      </head>
       <body>
       <p>验证成功，正在跳转...</p>
       <script>
@@ -37,11 +42,12 @@ module.exports = async function (req, res) {
             provider: "github"
           });
         
-        // 发送消息给主窗口
-        window.opener.postMessage(msg, "*");
-        
-        // 延迟关闭窗口，确保消息发送成功
-        setTimeout(() => { window.close(); }, 800);
+        if (window.opener) {
+          window.opener.postMessage(msg, "*");
+          setTimeout(() => { window.close(); }, 1000);
+        } else {
+          document.body.innerHTML = "错误：无法找到主窗口 (window.opener is null)，请手动关闭此页面并重试。";
+        }
       </script>
       </body>
       </html>
