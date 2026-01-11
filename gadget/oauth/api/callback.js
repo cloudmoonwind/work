@@ -26,11 +26,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    // 关键修改：先转义 token，避免模板字符串冲突
-    const tokenData = JSON.stringify({
-      token: data.access_token,
-      provider: "github"
-    });
+    const token = data.access_token;
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.end(`
@@ -38,26 +34,65 @@ export default async function handler(req, res) {
       <html>
       <head>
         <meta charset="utf-8">
-        <title>验证成功</title>
+        <title>验证成功 - 调试模式</title>
       </head>
       <body>
-      <p>验证成功，正在跳转...</p>
-      <script>
-        const tokenData = ${tokenData};
-        const msg = 'authorization:github:success:' + JSON.stringify(tokenData);
+        <h2>验证成功</h2>
+        <p id="status">正在发送消息...</p>
+        <button onclick="window.close()" style="margin-top: 20px; padding: 10px;">手动关闭窗口</button>
         
-        if (window.opener) {
-          // 发送消息
-          window.opener.postMessage(msg, window.location.origin);
-          
-          // 延迟关闭，确保消息发送成功
-          setTimeout(() => {
-            window.close();
-          }, 500);
-        } else {
-          document.body.innerHTML = '<h2 style="color:red">错误：无法连接到主窗口</h2>';
-        }
-      </script>
+        <h3>调试信息：</h3>
+        <pre id="debug"></pre>
+        
+        <script>
+          (function() {
+            const token = "${token.replace(/"/g, '\\"')}";
+            const debugEl = document.getElementById('debug');
+            const statusEl = document.getElementById('status');
+            
+            function log(msg) {
+              console.log(msg);
+              debugEl.textContent += msg + '\\n';
+            }
+            
+            log("Token 长度: " + token.length);
+            log("Token 前10位: " + token.substring(0, 10) + "...");
+            log("window.opener 存在: " + (!!window.opener));
+            
+            if (!window.opener) {
+              statusEl.innerHTML = '<span style="color:red">错误：window.opener 不存在！</span>';
+              log("错误：window.opener 为 null");
+              return;
+            }
+            
+            log("window.opener.origin: " + window.opener.origin);
+            
+            const message = "authorization:github:success:" + JSON.stringify({
+              token: token,
+              provider: "github"
+            });
+            
+            log("消息内容: " + message.substring(0, 100) + "...");
+            
+            try {
+              window.opener.postMessage(message, "https://cloudmoonwind.github.io");
+              log("✓ 消息已发送到 https://cloudmoonwind.github.io");
+              statusEl.innerHTML = '<span style="color:green">消息已发送！请检查主窗口控制台</span>';
+            } catch (e) {
+              log("✗ 发送失败: " + e.message);
+              statusEl.innerHTML = '<span style="color:red">发送失败: ' + e.message + '</span>';
+            }
+            
+            // 也尝试发送到 window.opener.origin
+            try {
+              window.opener.postMessage(message, window.opener.origin);
+              log("✓ 消息已发送到 " + window.opener.origin);
+            } catch (e) {
+              log("✗ 发送到 opener.origin 失败: " + e.message);
+            }
+            
+          })();
+        </script>
       </body>
       </html>
     `);
