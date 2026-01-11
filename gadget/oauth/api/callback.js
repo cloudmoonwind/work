@@ -1,62 +1,45 @@
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-
 module.exports = async function (req, res) {
   const { code } = req.query;
 
   if (!code) {
-    res.statusCode = 400;
-    res.end("No code provided");
+    res.status(400).send("No code");
     return;
   }
 
   const client_id = process.env.OAUTH_CLIENT_ID;
   const client_secret = process.env.OAUTH_CLIENT_SECRET;
 
-  if (!client_id || !client_secret) {
-    res.statusCode = 500;
-    res.end("Missing OAuth env vars");
-    return;
-  }
-
   try {
-    const response = await fetch(
-      "https://github.com/login/oauth/access_token",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({ client_id, client_secret, code }),
-      }
-    );
+    const r = await fetch("https://github.com/login/oauth/access_token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({ client_id, client_secret, code })
+    });
 
-    const data = await response.json();
-    const token = data.access_token;
+    const data = await r.json();
 
-    if (!token) {
-      res.statusCode = 500;
-      res.end("No token received from GitHub");
+    if (!data.access_token) {
+      res.status(500).send("No access_token");
       return;
     }
 
     res.setHeader("Content-Type", "text/html");
     res.end(`
       <script>
-        if (window.opener) {
-          window.opener.postMessage({
-            type: "authorization:github:success",
-            token: "${token}",
+        window.opener.postMessage(
+          'authorization:github:success:' + JSON.stringify({
+            token: "${data.access_token}",
             provider: "github"
-          }, "*");
-          window.close();
-        } else {
-          document.write("Authorization complete. You can close this window.");
-        }
+          }),
+          "*"
+        );
+        window.close();
       </script>
     `);
-  } catch (err) {
-    res.statusCode = 500;
-    res.end("Callback error: " + err.toString());
+  } catch (e) {
+    res.status(500).send(e.toString());
   }
 };
