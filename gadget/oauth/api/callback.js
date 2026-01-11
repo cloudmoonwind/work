@@ -37,59 +37,32 @@ export default async function handler(req, res) {
         <title>验证成功</title>
       </head>
       <body>
-        <h2>验证成功</h2>
-        <p id="status">正在发送消息...</p>
-        <button onclick="window.close()" style="margin-top: 20px; padding: 10px;">手动关闭窗口</button>
-        
-        <h3>调试信息：</h3>
-        <pre id="debug"></pre>
-        
+        <p>验证成功，请稍候...</p>
         <script>
           (function() {
             const token = ${tokenJson};
-            const debugEl = document.getElementById('debug');
-            const statusEl = document.getElementById('status');
-            
-            function log(msg) {
-              console.log(msg);
-              debugEl.textContent += msg + '\\n';
-            }
-            
-            log("Token 长度: " + token.length);
-            log("Token 前10位: " + token.substring(0, 10) + "...");
-            log("window.opener 存在: " + (!!window.opener));
             
             if (!window.opener) {
-              statusEl.innerHTML = '<span style="color:red">错误：window.opener 不存在！</span>';
-              log("错误：window.opener 为 null");
+              document.body.innerHTML = '<h2 style="color:red">错误：无法连接到主窗口</h2>';
               return;
             }
             
-            // 不要读取 window.opener.origin，直接发送到已知域
             const message = "authorization:github:success:" + JSON.stringify({
               token: token,
               provider: "github"
             });
             
-            log("消息长度: " + message.length);
-            log("消息前100字符: " + message.substring(0, 100) + "...");
+            console.log("准备发送消息:", message.substring(0, 100) + "...");
             
-            try {
-              // 发送到你的 GitHub Pages 域名
-              window.opener.postMessage(message, "https://cloudmoonwind.github.io");
-              log("✓ 消息已发送到 https://cloudmoonwind.github.io");
-              statusEl.innerHTML = '<span style="color:green">消息已发送！请检查主窗口控制台</span>';
-              
-              // 3秒后自动关闭
-              setTimeout(() => {
-                log("准备关闭窗口...");
-                window.close();
-              }, 3000);
-              
-            } catch (e) {
-              log("✗ 发送失败: " + e.message);
-              statusEl.innerHTML = '<span style="color:red">发送失败: ' + e.message + '</span>';
-            }
+            // 关键：使用 "*" 而不是具体域名
+            window.opener.postMessage(message, "*");
+            
+            console.log("消息已发送");
+            
+            // 延迟关闭，确保消息发送成功
+            setTimeout(() => {
+              window.close();
+            }, 1000);
             
           })();
         </script>
