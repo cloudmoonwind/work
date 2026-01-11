@@ -42,12 +42,20 @@ module.exports = async function (req, res) {
             provider: "github"
           });
         
-        if (window.opener) {
-          window.opener.postMessage(msg, "*");
-          setTimeout(() => { window.close(); }, 1000);
-        } else {
-          document.body.innerHTML = "错误：无法找到主窗口 (window.opener is null)，请手动关闭此页面并重试。";
+        function sendMessage() {
+          if (window.opener) {
+            window.opener.postMessage(msg, "*");
+          } else {
+            document.body.innerHTML = "错误：无法找到主窗口 (window.opener is null)，请手动关闭此页面并重试。";
+          }
         }
+
+        // 立即发送一次
+        sendMessage();
+        // 0.5秒后再发送一次，防止主窗口没准备好
+        setTimeout(sendMessage, 500);
+        // 1.5秒后关闭窗口
+        setTimeout(() => { window.close(); }, 3000);
       </script>
       </body>
       </html>
