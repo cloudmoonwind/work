@@ -26,7 +26,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    const token = data.access_token;
+    const tokenJson = JSON.stringify(data.access_token);
 
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.end(`
@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       <html>
       <head>
         <meta charset="utf-8">
-        <title>验证成功 - 调试模式</title>
+        <title>验证成功</title>
       </head>
       <body>
         <h2>验证成功</h2>
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         
         <script>
           (function() {
-            const token = "${token.replace(/"/g, '\\"')}";
+            const token = ${tokenJson};
             const debugEl = document.getElementById('debug');
             const statusEl = document.getElementById('status');
             
@@ -65,30 +65,30 @@ export default async function handler(req, res) {
               return;
             }
             
-            log("window.opener.origin: " + window.opener.origin);
-            
+            // 不要读取 window.opener.origin，直接发送到已知域
             const message = "authorization:github:success:" + JSON.stringify({
               token: token,
               provider: "github"
             });
             
-            log("消息内容: " + message.substring(0, 100) + "...");
+            log("消息长度: " + message.length);
+            log("消息前100字符: " + message.substring(0, 100) + "...");
             
             try {
+              // 发送到你的 GitHub Pages 域名
               window.opener.postMessage(message, "https://cloudmoonwind.github.io");
               log("✓ 消息已发送到 https://cloudmoonwind.github.io");
               statusEl.innerHTML = '<span style="color:green">消息已发送！请检查主窗口控制台</span>';
+              
+              // 3秒后自动关闭
+              setTimeout(() => {
+                log("准备关闭窗口...");
+                window.close();
+              }, 3000);
+              
             } catch (e) {
               log("✗ 发送失败: " + e.message);
               statusEl.innerHTML = '<span style="color:red">发送失败: ' + e.message + '</span>';
-            }
-            
-            // 也尝试发送到 window.opener.origin
-            try {
-              window.opener.postMessage(message, window.opener.origin);
-              log("✓ 消息已发送到 " + window.opener.origin);
-            } catch (e) {
-              log("✗ 发送到 opener.origin 失败: " + e.message);
             }
             
           })();
