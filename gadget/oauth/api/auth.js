@@ -1,4 +1,4 @@
-module.exports = function (req, res) {
+export default function handler(req, res) {
   const { host } = req.headers;
   const client_id = process.env.OAUTH_CLIENT_ID;
 
